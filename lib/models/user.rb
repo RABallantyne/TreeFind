@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
     end
 
     def self.saved_trees
+        
     end
 
 end

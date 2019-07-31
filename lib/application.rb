@@ -1,24 +1,12 @@
-# require "pry"
-# require "tty-prompt"
-# require "colorize"
-# require_relative "./help"
-# require_relative "./questions.rb"
-# require_relative "../config/environment.rb"
-
 class Application
-# @@user = nil
+
     
 # ____________TITLE_PAGE___________________________
-
-#   @@user = nil
-#   @@type = nil
-#   @@needles = nil
 
 def self.tty_runner
     @@prompt = TTY::Prompt.new
     @@prompt
 end
-
 
 def self.get_username
     system "clear"
@@ -64,8 +52,6 @@ end
     }
     @@response = @@prompt.select(question, output).to_i
 
-    # @@response = gets.chomp.to_i
-
     case @@response
     when 1
       Question.question_one
@@ -74,7 +60,7 @@ end
     when 3
       Help.list_trees_by_characteristics
     when 4
-        Help.select_tree
+      Help.select_tree
     when 5
       User.saved_trees
     when 6
@@ -84,8 +70,6 @@ end
     end
   end
   
-
-
 # # ____________Question_1_Deciduous/Coniferous___________________________
 
 #   def self.question_one
