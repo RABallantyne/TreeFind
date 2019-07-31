@@ -6,7 +6,7 @@ class Help
   end
 
   def self.list_trees_by_characteristics
-    puts "butt"
+    puts 
   end
 
   def self.main_menu_help

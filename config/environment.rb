@@ -13,4 +13,4 @@ ActiveRecord::Base.establish_connection(adapter: 'sqlite3', database: 'db/trees.
 # puts Tree.tall_trees
 # binding.pry
 ActiveRecord::Base.logger = nil
-Application.main_menu
+# Application.main_menu

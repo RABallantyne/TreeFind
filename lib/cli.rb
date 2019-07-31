@@ -21,18 +21,32 @@ class Application
 
   def self.get_username
     system "clear"
-    Application.tty_runner
+    tty_runner
     puts "Hello! Welcome to TreeFind!".white.on_green
+    
+    question = "Have you logged in before?"
+    output = {
+        "I have not!" => 1,
+        "Sure have!" => 2,  
+    }
+    response = @@prompt.select(question, output).to_i
+
+    if response == 1
     @@user = @@prompt.ask("What is your name?", default: ENV["USER"])
+    User.create(user_name: @@user)
+    else User.list_users
+    end
+    
+# binding.pry
   end
-  self.get_username
+  get_username
 
 
 # ____________MAIN_MENU___________________________
 
   def self.main_menu
     system "clear"
-    Application.tty_runner
+    tty_runner
 
     question = "Hello, #{@@user}! What would you like to do?"
     output = {"Identify a tree." => 1,
@@ -55,7 +69,7 @@ class Application
       Help.main_menu_help
     else
       puts "Please enter a number between 1 and 4"
-      self.main_menu
+    #   self.main_menu
     end
   end
   self.main_menu
@@ -74,13 +88,13 @@ class Application
     when 3
       Help.list_trees_by_characteristics
     when 4
-      Application.main_menu
+      self.main_menu
     else
       puts "Please enter a number between 1 and 4"
       self.question_one
     end
   end
-  Application.question_one
+  question_one
 
 
 #####_________________CONIFERS_______________________####
@@ -111,7 +125,7 @@ class Application
       self.question_two_conifer
     end
   end
-  Application.question_two_conifer
+  question_two_conifer
 
 
 
@@ -135,7 +149,7 @@ class Application
       self.question_three_conifer
     end
   end
-  Application.question_three_conifer
+  question_three_conifer
 
   # ____________Question_4_Conifer_Bark-Texture___________________________
 
