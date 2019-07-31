@@ -37,10 +37,8 @@ def self.get_username
         User.create(user_name: user)
         # binding.pry
     else 
-
         question = "Select your User Name:"
         output = User.all.map(&:user_name)
-     
         user = @@prompt.select(question, output)
     end 
 
