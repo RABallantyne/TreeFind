@@ -1,3 +1,6 @@
+Tree.destroy_all
+
+
 blue_spruce = Tree.create(common_name: "Blue Spruce", 
                     common_fam_name: "Pine", 
                     coniferous_deciduous: "Coniferous", 

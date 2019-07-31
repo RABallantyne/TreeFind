@@ -3,7 +3,7 @@
 # require "colorize"
 # require_relative "./help"
 # require_relative "./questions.rb"
-require_relative "../config/environment.rb"
+# require_relative "../config/environment.rb"
 
 class Application
 # @@user = nil
@@ -39,33 +39,14 @@ def self.get_username
     else 
 
         question = "Select your User Name:"
+        output = User.all.map(&:user_name)
      
-        i = 0
-        array = User.list_users
-        hash = {}
-        while i < array.length do
-            hash[array[i]] = (i + 1)
-            i +=1
-        # binding.pry
-        output = hash
-        end
-        user = @@prompt.select(question, output).to_i
+        user = @@prompt.select(question, output)
+    end 
 
-        i = 0
-        array = User.list_users
-        name1 = nil
-            while i < array.length do
-            name1 = array[i]
-            i +=1
-            output = hash
-            name1
-            end
-        end 
-    user = User.pluck(:user_name)[user-1]
+    user = User.find_by(user_name: user)
     # binding.pry
 end
-  
-
 
 # ____________MAIN_MENU___________________________
 
@@ -74,13 +55,14 @@ end
     tty_runner
     user = get_username
 
-    question = "Hello, #{user}! What would you like to do?"
+    question = "Hello, #{user.user_name}! What would you like to do?"
     # binding.pry
     output = {"Identify a tree." => 1,
       "See a list of all available trees." => 2,
       "See a list of all available trees by characteristic." => 3,
-      "See your favorite trees" => 4,
-      "Learn how to use this app." => 5
+      "Add a tree to your list of favorites" => 4,
+      "See your favorite trees" => 5,
+      "Learn how to use this app." => 6
     }
     @@response = @@prompt.select(question, output).to_i
 
@@ -94,15 +76,16 @@ end
     when 3
       Help.list_trees_by_characteristics
     when 4
-      User.saved_trees
+        Help.select_tree
     when 5
+      User.saved_trees
+    when 6
       Help.main_menu_help
     else
       puts "Please enter a number between 1 and 4"
-    #   self.main_menu
     end
   end
-  self.main_menu
+  
 
 
 # # ____________Question_1_Deciduous/Coniferous___________________________

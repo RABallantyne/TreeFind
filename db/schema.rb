@@ -13,12 +13,14 @@
 ActiveRecord::Schema.define(version: 2019_07_31_003325) do
 
   create_table "favorites", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "tree_id"
     t.string "saved_tree"
+    t.index ["tree_id"], name: "index_favorites_on_tree_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "trees", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "favorite_id"
     t.string "common_name"
     t.string "common_fam_name"
     t.string "coniferous_deciduous"
@@ -39,8 +41,6 @@ ActiveRecord::Schema.define(version: 2019_07_31_003325) do
     t.string "flower_shape"
     t.string "flower_color"
     t.string "habitat"
-    t.index ["favorite_id"], name: "index_trees_on_favorite_id"
-    t.index ["user_id"], name: "index_trees_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
