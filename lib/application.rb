@@ -50,10 +50,9 @@ end
   
     output = {"Identify a tree." => 1,
       "See a list of all available trees." => 2,
-      "See a list of all available trees by characteristic." => 3,
-      "Add a tree to your list of favorites" => 4,
-      "See your favorite trees" => 5,
-      "Learn how to use this app." => 6
+      "Add a tree to your list of favorites" => 3,
+      "See your favorite trees" => 4,
+      "Learn how to use this app." => 5
     }
     @@response = @@prompt.select(question, output).to_i
 
@@ -63,12 +62,10 @@ end
     when 2
       Tree.all_trees
     when 3
-      Help.list_trees_by_characteristics
-    when 4
       Favorite.add_to_favorites
-    when 5
+    when 4
       Favorite.show_favorites
-    when 6
+    when 4
       Help.main_menu_help
     else
       puts "Please enter a number between 1 and 4"

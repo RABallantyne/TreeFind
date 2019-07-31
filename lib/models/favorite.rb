@@ -14,6 +14,7 @@ class Favorite < ActiveRecord::Base
         trees = Tree.all.map{ |tree|[tree.common_name, tree.common_name]}.to_h 
     
         question = "What tree do you want to add to your favorites?"
+        puts " "
         response = @@prompt.select(question, trees)
         response 
     
@@ -33,10 +34,12 @@ class Favorite < ActiveRecord::Base
        tty_runner
         user = Application.return_username
         user_id = user.id
-        
+        puts " "
         puts Tree.joins(:users).select("trees.*, favorites.*, users.*").where("users.id = ?", user_id).pluck(:common_name).uniq
-        
+        puts " "
+        puts " "
         puts "Aren't these trees neat!"
+        puts " "
         question = "Return to Main Menu?"
         output = %w(yes exit)
 
