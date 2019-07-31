@@ -13,7 +13,7 @@ class Question
 
   def self.question_one
     system "clear"
-    self.tty_runner
+    tty_runner
 
     puts "Conifers are trees with cones and needle-like or scale-like leaves that are typically evergreen (retain their leaves throughout the year)."
     puts "Pines and firs are conifers, for example."
@@ -31,7 +31,7 @@ class Question
       "Return to Main Menu." => 4
     }
 
-    @@response = @@prompt.select(question, output).to_i
+    response = @@prompt.select(question, output).to_i
   end
 
 
@@ -41,7 +41,7 @@ class Question
 
   def self.question_two_conifer
     system "clear"
-    self.tty_runner
+    tty_runner
 
     puts "Your tree is a conifer! There are XX available conifers."
     puts "The way a conifer's needles are arranged can help you identify the species."
@@ -56,7 +56,7 @@ class Question
       "Needles are scaled." => 5,
       "See a list of x remaining trees." => 6
     }
-    @@response = @@prompt.select(question, output).to_i
+    response = @@prompt.select(question, output).to_i
   end
 
 
@@ -64,7 +64,7 @@ class Question
 
 def self.question_three_conifer
   system "clear"
-  self.tty_runner
+  tty_runner
 
   puts "Your needles are XX! There are XX trees available."
   puts "A conifer's 'fruit' can be a woody or papery cone, or the tree can have berries."
@@ -75,7 +75,7 @@ def self.question_three_conifer
     "The tree has berries." => 3,
     "See a list of x remaining trees." => 4
   }
-  @@response = @@prompt.select(question, output).to_i
+  response = @@prompt.select(question, output).to_i
 end
 
 
@@ -83,7 +83,7 @@ end
 
 def self.question_four_conifer
   system "clear"
-  self.tty_runner
+  tty_runner
 
   puts "Your cones are XX! There are XX trees available."
   puts "A tree's bark can be very distinctive. Bark can be smooth or bumpy, be furrowed with deep ridges, have scales, or be peeling and papery."
@@ -96,14 +96,14 @@ def self.question_four_conifer
     "Bark is peeling." => 5,
     "See a list of x remaining trees." => 6
   }
-  @@response = @@prompt.select(question, output).to_i
+  response = @@prompt.select(question, output).to_i
 end
 
 # ____________Question_5_Conifer_Bark-Color___________________________
 
 def self.question_five_conifer
   system "clear"
-  self.tty_runner
+  tty_runner
 
   puts "Your bark is XX! There are XX trees available."
   puts "The color of tree bark also varies broadly."
@@ -115,14 +115,14 @@ def self.question_five_conifer
     "Bark is red-brown." => 4,
     "See a list of x remaining trees." => 5
   }
-  @@response = @@prompt.select(question, output).to_i
+  response = @@prompt.select(question, output).to_i
 end
 
 # ____________Question_6_Conifer_Twigs___________________________
 
 def self.question_six_conifer
   system "clear"
-  self.tty_runner
+  tty_runner
 
   puts "Your bark is XX! There are XX trees available."
   question = "What texture are the tree's twigs?"
@@ -135,7 +135,7 @@ def self.question_six_conifer
     "Twigs are sticky." => 6,
     "See a list of x remaining trees." => 7
   }
-  @@response = @@prompt.select(question, output).to_i
+  response = @@prompt.select(question, output).to_i
 end
 
 
@@ -147,7 +147,7 @@ end
 
   def self.question_two_deciduous
     system "clear"
-    self.tty_runner
+    tty_runner
 
     puts "Your tree is deciduous! There XX available deciduous trees."
     puts "The way a tree's leaves are arranged can help you identify the species."
@@ -159,14 +159,14 @@ end
       "Leaves are basal." => 4,
       "See a list of x remaining trees." => 5
     }
-    @@response = @@prompt.select(question, output).to_i
+    response = @@prompt.select(question, output).to_i
   end
 
   # ____________Question_3_Deciduous_Leaf-Shape___________________________
 
   def self.question_three_deciduous
     system "clear"
-    self.tty_runner
+    tty_runner
 
     puts "Your leaves are XX! There XX trees available."
     puts "The shape of a leaf can also be very distinctive."
@@ -181,14 +181,14 @@ end
       "Leaves are lobed." => 7,
       "See a list of x remaining trees." => 8
     }
-    @@response = @@prompt.select(question, output).to_i
+    response = @@prompt.select(question, output).to_i
   end
 
   # ____________Question_4_Deciduous_Bark-Texture___________________________
 
   def self.question_four_deciduous
     system "clear"
-    self.tty_runner
+    tty_runner
 
     puts "Your cones are XX! There are XX trees available."
     puts "A tree's bark can be very distinctive."
@@ -202,14 +202,14 @@ end
       "Bark is peeling." => 5,
       "See a list of x remaining trees." => 6
     }
-    @@response = @@prompt.select(question, output).to_i
+    response = @@prompt.select(question, output).to_i
   end
 
   # ____________Question_5_Deciduous_Bark-Color___________________________
 
   def self.question_five_deciduous
     system "clear"
-    self.tty_runner
+    tty_runner
 
     puts "Your bark is XX! There are XX trees available."
     puts "The color of tree bark also varies broadly."
@@ -221,14 +221,14 @@ end
       "Bark is red-brown." => 4,
       "See a list of x remaining trees." => 5
     }
-    @@response = @@prompt.select(question, output).to_i
+    response = @@prompt.select(question, output).to_i
   end
 
   # ____________Question_6_Deciduous_Twigs___________________________
 
   def self.question_six_deciduous
     system "clear"
-    self.tty_runner
+    tty_runner
 
     puts "Your bark is XX! There are XX trees available."
     question =  "What texture are the tree's twigs?"
@@ -241,14 +241,14 @@ end
       "Twigs are sticky." => 6,
       "See a list of x remaining trees." => 7
     }
-    @@response = @@prompt.select(question, output).to_i
+    response = @@prompt.select(question, output).to_i
   end
 
   # ____________Question_7_Deciduous_Fruits___________________________
 
   def self.question_seven_deciduous
     system "clear"
-    self.tty_runner
+    tty_runner
 
     puts "Your twigs are XX! There are XX trees available."
     question =  "What type of fruit does the tree have?"
@@ -261,14 +261,14 @@ end
       "The tree has cones." => 6,
       "See a list of x remaining trees." => 7
     }
-    @@response = @@prompt.select(question, output).to_i
+    response = @@prompt.select(question, output).to_i
   end
 
   # ____________Question_8_Deciduous_Flower-Shape___________________________
 
   def self.question_eight_deciduous
     system "clear"
-    self.tty_runner
+    tty_runner
 
     puts "Your fruits are XX! There are XX trees available."
     question =  "What shape are the tree's flowers?"
@@ -281,14 +281,14 @@ end
       "Flowers are another shape." => 6,
       "See a list of x remaining trees." => 7
     }
-    @@response = @@prompt.select(question, output).to_i
+    response = @@prompt.select(question, output).to_i
   end
 
   # ____________Question_9_Deciduous_Flower-Color___________________________
 
   def self.question_nine_deciduous
     system "clear"
-    self.tty_runner
+    tty_runner
 
     puts "Your flowers are XX! There are XX trees available."
     question =  "What color are the tree's flowers?"
@@ -304,7 +304,7 @@ end
       "Flowers are pink." => 9,
       "See a list of x remaining trees." => 10
     }
-    @@response = @@prompt.select(question, output).to_i
+    response = @@prompt.select(question, output).to_i
   end
 
 end
