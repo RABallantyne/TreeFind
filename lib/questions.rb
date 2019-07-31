@@ -41,6 +41,8 @@ class Question
 
   def self.question_two_conifer
     system "clear"
+    self.tty_runner
+
     puts "Your tree is a conifer! There are XX available conifers."
     puts "The way a conifer's needles are arranged can help you identify the species."
     puts "A conifer can have individual or clustered needles, called fasciles."
@@ -62,6 +64,8 @@ class Question
 
 def self.question_three_conifer
   system "clear"
+  self.tty_runner
+
   puts "Your needles are XX! There are XX trees available."
   puts "A conifer's 'fruit' can be a woody or papery cone, or the tree can have berries."
   question = "What kind of cones does your tree have?"
@@ -79,6 +83,8 @@ end
 
 def self.question_four_conifer
   system "clear"
+  self.tty_runner
+
   puts "Your cones are XX! There are XX trees available."
   puts "A tree's bark can be very distinctive. Bark can be smooth or bumpy, be furrowed with deep ridges, have scales, or be peeling and papery."
   question = "What kind of bark does your tree have?"
@@ -97,9 +103,11 @@ end
 
 def self.question_five_conifer
   system "clear"
+  self.tty_runner
+
   puts "Your bark is XX! There are XX trees available."
   puts "The color of tree bark also varies broadly."
-  question = "What color bark does your tree have?""
+  question = "What color bark does your tree have?"
   output = {
     "Bark is brown." => 1,
     "Bark is gray-brown." => 2,
@@ -114,6 +122,8 @@ end
 
 def self.question_six_conifer
   system "clear"
+  self.tty_runner
+
   puts "Your bark is XX! There are XX trees available."
   question = "What texture are the tree's twigs?"
   output = {
@@ -137,6 +147,8 @@ end
 
   def self.question_two_deciduous
     system "clear"
+    self.tty_runner
+
     puts "Your tree is deciduous! There XX available deciduous trees."
     puts "The way a tree's leaves are arranged can help you identify the species."
     question = "What leaf arrangement does your tree have?"
@@ -154,6 +166,8 @@ end
 
   def self.question_three_deciduous
     system "clear"
+    self.tty_runner
+
     puts "Your leaves are XX! There XX trees available."
     puts "The shape of a leaf can also be very distinctive."
     question =  "What shape are your leaves?"
@@ -174,6 +188,8 @@ end
 
   def self.question_four_deciduous
     system "clear"
+    self.tty_runner
+
     puts "Your cones are XX! There are XX trees available."
     puts "A tree's bark can be very distinctive."
     puts "Bark can be smooth or bumpy, be furrowed with deep ridges, have scales, or be peeling and papery."
@@ -193,6 +209,8 @@ end
 
   def self.question_five_deciduous
     system "clear"
+    self.tty_runner
+
     puts "Your bark is XX! There are XX trees available."
     puts "The color of tree bark also varies broadly."
     question =  "What color bark does your tree have?"
@@ -210,6 +228,8 @@ end
 
   def self.question_six_deciduous
     system "clear"
+    self.tty_runner
+
     puts "Your bark is XX! There are XX trees available."
     question =  "What texture are the tree's twigs?"
     output = {
@@ -228,6 +248,8 @@ end
 
   def self.question_seven_deciduous
     system "clear"
+    self.tty_runner
+
     puts "Your twigs are XX! There are XX trees available."
     question =  "What type of fruit does the tree have?"
     output = {
@@ -246,6 +268,8 @@ end
 
   def self.question_eight_deciduous
     system "clear"
+    self.tty_runner
+
     puts "Your fruits are XX! There are XX trees available."
     question =  "What shape are the tree's flowers?"
     output = {
@@ -264,6 +288,8 @@ end
 
   def self.question_nine_deciduous
     system "clear"
+    self.tty_runner
+
     puts "Your flowers are XX! There are XX trees available."
     question =  "What color are the tree's flowers?"
     output = {
