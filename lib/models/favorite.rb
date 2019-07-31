@@ -19,7 +19,6 @@ class Favorite < ActiveRecord::Base
     
     end
 
-
     def self.add_to_favorites
     
         response = select_tree

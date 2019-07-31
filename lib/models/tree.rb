@@ -1,4 +1,3 @@
-# require "tty-prompt"
 
 class Tree < ActiveRecord::Base
     
