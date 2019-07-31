@@ -7,6 +7,6 @@ class Tree < ActiveRecord::Base
     end
 
     def self.all_trees
-        pluck(:common_name)
+        all.pluck(:common_name)
     end
 end
