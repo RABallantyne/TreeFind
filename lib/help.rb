@@ -8,7 +8,7 @@ class Help
   end
 
   def self.list_all_trees
-   puts Tree.all_trees
+   puts Tree.all
   end
 
   

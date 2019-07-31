@@ -9,7 +9,7 @@ def self.tty_runner
 end
 
 def self.get_username
-    system "clear"
+    # system "clear"
     tty_runner
     puts "Hello! Welcome to TreeFind!".white.on_green
     
@@ -42,11 +42,11 @@ end
 # ____________MAIN_MENU___________________________
 
   def self.main_menu
-    system "clear"
+    # system "clear"
     tty_runner
-    user = get_username
+    # user = get_username
 
-    question = "Hello, #{user.user_name}! What would you like to do?"
+    question = "Hello, #{@@user.user_name}! What would you like to do?"
   
     output = {"Identify a tree." => 1,
       "See a list of all available trees." => 2,
@@ -61,19 +61,21 @@ end
     when 1
       Question.question_one
     when 2
-      Help.list_all_trees
+      Tree.all_trees
     when 3
       Help.list_trees_by_characteristics
     when 4
       Favorite.add_to_favorites
     when 5
-      User.saved_trees
+      Favorite.show_favorites
     when 6
       Help.main_menu_help
     else
       puts "Please enter a number between 1 and 4"
     end
+    # main_menu
   end
+  # main_menu
   
 # # ____________Question_1_Deciduous/Coniferous___________________________
 
