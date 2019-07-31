@@ -23,16 +23,21 @@ def self.get_username
     if response == 1
         user = @@prompt.ask("What is your name?", default: ENV["USER"])
         User.create(user_name: user)
-        # binding.pry
     else 
         question = "Select your User Name:"
         output = User.all.map(&:user_name)
         user = @@prompt.select(question, output)
     end 
 
-    user = User.find_by(user_name: user)
-    # binding.pry
+    @@user = User.find_by(user_name: user)
+    
 end
+
+def self.return_username
+  # user = get_username
+  @@user 
+end
+
 
 # ____________MAIN_MENU___________________________
 
@@ -42,7 +47,7 @@ end
     user = get_username
 
     question = "Hello, #{user.user_name}! What would you like to do?"
-    # binding.pry
+  
     output = {"Identify a tree." => 1,
       "See a list of all available trees." => 2,
       "See a list of all available trees by characteristic." => 3,
@@ -60,7 +65,7 @@ end
     when 3
       Help.list_trees_by_characteristics
     when 4
-      Help.select_tree
+      Favorite.add_to_favorites
     when 5
       User.saved_trees
     when 6
