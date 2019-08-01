@@ -31,6 +31,13 @@ class Question
     }
 
     response = @@prompt.select(question, output).to_i
+    case response
+    when 1
+      @@type = "Coniferous"
+    when 2
+      @@type = "Deciduous"
+    end
+    response
   end
 
 
@@ -42,13 +49,15 @@ class Question
     system "clear"
     tty_runner
 
-    # puts Tree.joins(:users).select("trees.*, favorites.*, users.*").where("users.id = ?", user_id).pluck(:common_name).uniq
-    # binding.pry
+    tree_count = Tree.all.where("coniferous_deciduous = ?", @@type).count
+    tree_list = Tree.all.where("coniferous_deciduous = ?", @@type).pluck(:common_name)
 
-    puts "Your tree is a conifer! There are XX available conifers."
+    puts "Your tree is a conifer! There are #{tree_count} available conifers."
+    puts ""
     puts "The way a conifer's needles are arranged can help you identify the species."
     puts "A conifer can have individual or clustered needles, called fasciles."
     puts "Needles can also be flat or sharp."
+    puts ""
     question = "What needle arrangement does your tree have?"
     output = {
       "Needles are in clusters of 2-3."  => 1,
@@ -56,9 +65,22 @@ class Question
       "Needles are flat." => 3,
       "Needles are sharp." => 4,
       "Needles are scaled." => 5,
-      "See a list of x remaining trees." => 6
+      "See a list of #{tree_count} remaining trees." => 6
     }
     response = @@prompt.select(question, output).to_i
+    case response
+    when 1
+      @@needles = "Clusters of 2-3"
+    when 2
+      @@needles = "Clusters of 5"
+    when 3
+      @@needles = "Flat"
+    when 4
+      @@needles = "Sharp"
+    when 5
+      @@needles = "Scaled"
+    end
+    response
   end
 
 
@@ -68,16 +90,30 @@ def self.question_three_conifer
   system "clear"
   tty_runner
 
-  puts "Your needles are XX! There are XX trees available."
+  tree_count = Tree.all.where("coniferous_deciduous = ?", @@type).where("needle_shape = ?", @@needles).count
+  tree_list = Tree.all.where("coniferous_deciduous = ?", @@type).where("needle_shape = ?", @@needles).pluck(:common_name)
+
+  puts "Your needles are #{@@needles}! There are #{tree_count} trees available."
+  puts ""
   puts "A conifer's 'fruit' can be a woody or papery cone, or the tree can have berries."
+  puts ""
   question = "What kind of cones does your tree have?"
   output = {
     "Cones are woody." => 1,
     "Cones are papery." => 2,
     "The tree has berries." => 3,
-    "See a list of x remaining trees." => 4
+    "See a list of #{tree_count} remaining trees." => 4
   }
   response = @@prompt.select(question, output).to_i
+  case response
+  when 1
+    @@cones = "Woody"
+  when 2
+    @@cones = "Papery"
+  when 3
+    @@cones = "Berry"
+  end
+  response
 end
 
 
@@ -87,8 +123,13 @@ def self.question_four_conifer
   system "clear"
   tty_runner
 
-  puts "Your cones are XX! There are XX trees available."
+  tree_count = Tree.all.where("coniferous_deciduous = ?", @@type).where("needle_shape = ?", @@needles).where("cone_type = ?", @@cones).count
+  tree_list = Tree.all.where("coniferous_deciduous = ?", @@type).where("needle_shape = ?", @@needles).where("cone_type = ?", @@cones).pluck(:common_name)
+
+  puts "Your cones are #{@@cones}! There are #{tree_count} trees available."
+  puts ""
   puts "A tree's bark can be very distinctive. Bark can be smooth or bumpy, be furrowed with deep ridges, have scales, or be peeling and papery."
+  puts ""
   question = "What kind of bark does your tree have?"
   output = {
     "Bark is smooth." => 1,
@@ -96,9 +137,22 @@ def self.question_four_conifer
     "Bark is furrowed." => 3,
     "Bark is scaled." => 4,
     "Bark is peeling." => 5,
-    "See a list of x remaining trees." => 6
+    "See a list of #{tree_count} remaining trees." => 6
   }
   response = @@prompt.select(question, output).to_i
+  case response
+  when 1
+    @@bark_texture = "Smooth"
+  when 2
+    @@bark_texture = "Bumpy"
+  when 3
+    @@bark_texture = "Furrowed"
+  when 4
+    @@bark_texture = "Scaled"
+  when 5
+    @@bark_texture = "Peeling"
+  end
+  response
 end
 
 # ____________Question_5_Conifer_Bark-Color___________________________
@@ -107,7 +161,10 @@ def self.question_five_conifer
   system "clear"
   tty_runner
 
-  puts "Your bark is XX! There are XX trees available."
+  tree_count = Tree.all.where("coniferous_deciduous = ?", @@type).where("needle_shape = ?", @@needles).where("cone_type = ?", @@cones).where("bark_texture = ?", @@bark_texture).count
+  tree_list = Tree.all.where("coniferous_deciduous = ?", @@type).where("needle_shape = ?", @@needles).where("cone_type = ?", @@cones).where("bark_texture = ?", @@bark_texture).pluck(:common_name)
+
+  puts "Your bark is #{@@bark_texture}! There are #{tree_count} trees available."
   puts "The color of tree bark also varies broadly."
   question = "What color bark does your tree have?"
   output = {
@@ -115,9 +172,20 @@ def self.question_five_conifer
     "Bark is gray-brown." => 2,
     "Bark is gray." => 3,
     "Bark is red-brown." => 4,
-    "See a list of x remaining trees." => 5
+    "See a list of #{tree_count} remaining trees." => 5
   }
   response = @@prompt.select(question, output).to_i
+  case response
+  when 1
+    @@bark_color = "brown"
+  when 2
+    @@bark_color = "gray-brown"
+  when 3
+    @@bark_color = "gray"
+  when 4
+    @@bark_color = "red-brown"
+  end
+  response
 end
 
 # ____________Question_6_Conifer_Twigs___________________________
@@ -126,7 +194,10 @@ def self.question_six_conifer
   system "clear"
   tty_runner
 
-  puts "Your bark is XX! There are XX trees available."
+  tree_count = Tree.all.where("coniferous_deciduous = ?", @@type).where("needle_shape = ?", @@needles).where("cone_type = ?", @@cones).where("bark_texture = ?", @@bark_texture).where("bark_color = ?", @@bark_color).count
+  tree_list = Tree.all.where("coniferous_deciduous = ?", @@type).where("needle_shape = ?", @@needles).where("cone_type = ?", @@cones).where("bark_texture = ?", @@bark_texture).where("bark_color = ?", @@bark_color).pluck(:common_name)
+
+  puts "Your bark is #{bark_color}! There are #{tree_count} trees available."
   question = "What texture are the tree's twigs?"
   output = {
     "Twigs are smooth." => 1,
@@ -135,9 +206,24 @@ def self.question_six_conifer
     "Twigs are peeling." => 4,
     "Twigs are thorny." => 5,
     "Twigs are sticky." => 6,
-    "See a list of x remaining trees." => 7
+    "See a list of #{tree_count} remaining trees." => 7
   }
   response = @@prompt.select(question, output).to_i
+  case response
+  when 1
+    @@twigs = "Smooth"
+  when 2
+    @@twigs = "Hairy"
+  when 3
+    @@twigs = "Rough"
+  when 4
+    @@twigs = "Peeling"
+  when 5
+    @@twigs = "Thorny"
+  when 6
+    @@twigs = "Sticky"
+  end
+  response
 end
 
 
@@ -151,15 +237,20 @@ end
     system "clear"
     tty_runner
 
-    puts "Your tree is deciduous! There XX available deciduous trees."
+    tree_count = Tree.all.where("coniferous_deciduous = 'Deciduous'").count
+    tree_list = Tree.all.where("coniferous_deciduous = 'Deciduous'").pluck(:common_name)
+
+    puts "Your tree is deciduous! There #{tree_count} available deciduous trees."
+    puts ""
     puts "The way a tree's leaves are arranged can help you identify the species."
+    puts ""
     question = "What leaf arrangement does your tree have?"
     output = {
       "Leaves are opposite." => 1,
       "Leaves are alternate." => 2,
       "Leaves are whorled." => 3,
       "Leaves are basal." => 4,
-      "See a list of x remaining trees." => 5
+      "See a list of #{tree_count} remaining trees." => 5
     }
     response = @@prompt.select(question, output).to_i
   end

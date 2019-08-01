@@ -9,32 +9,33 @@ def self.tty_runner
 end
 
 def self.get_username
-    # system "clear"
-    tty_runner
-    puts "Hello! Welcome to TreeFind!".white.on_green
+  tty_runner
 
-    question = "Have you logged in before?"
-    output = {
-        "I have not!" => 1,
-        "Sure have!" => 2,
-    }
-    response = @@prompt.select(question, output).to_i
+  puts "Hello! Welcome to TreeFind!".white.on_green
+  puts ""
 
-    if response == 1
-        user = @@prompt.ask("What is your name?", default: ENV["USER"])
-        User.create(user_name: user)
-    else
-        question = "Select your User Name:"
-        output = User.all.map(&:user_name)
-        user = @@prompt.select(question, output)
-    end
+  question = "Have you logged in before?"
 
-    @@user = User.find_by(user_name: user)
+  output = {
+    "I have not!" => 1,
+    "Sure have!" => 2,
+  }
 
+  response = @@prompt.select(question, output).to_i
+
+  if response == 1
+    user = @@prompt.ask("What is your name?", default: ENV["USER"])
+    User.create(user_name: user)
+  else
+    question = "Select your User Name:"
+    output = User.all.map(&:user_name)
+    user = @@prompt.select(question, output)
+  end
+
+  @@user = User.find_by(user_name: user)
 end
 
 def self.return_username
-  # user = get_username
   @@user
 end
 
@@ -42,9 +43,7 @@ end
 # ____________MAIN_MENU___________________________
 
   def self.main_menu
-    # system "clear"
     tty_runner
-    # user = get_username
 
     question = "Hello, #{@@user.user_name}! What would you like to do?"
 
@@ -113,7 +112,9 @@ end
     when 5
       needles = "Scaled"
     when 6
-      Help.list_all_trees
+      puts ""
+      puts ""
+      puts Tree.all.where("coniferous_deciduous = 'Coniferous'").pluck(:common_name)
     else
       puts "Please enter a number between 1 and 6"
       self.question_two_conifer_response
@@ -222,7 +223,9 @@ end
     when 4
       leaves = "Basal"
     when 5
-      Help.list_all_trees
+      puts ""
+      puts ""
+      puts Tree.all.where("coniferous_deciduous = 'Deciduous'").pluck(:common_name)
     else
       puts "Please enter a number between 1 and 5"
       self.question_two_deciduous_response
