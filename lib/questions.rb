@@ -1,4 +1,5 @@
 require "tty-prompt"
+require "pry"
 
 class Question
 
@@ -17,12 +18,10 @@ class Question
 
     puts "Conifers are trees with cones and needle-like or scale-like leaves that are typically evergreen (retain their leaves throughout the year)."
     puts "Pines and firs are conifers, for example."
+    puts ""
     puts "Deciduous trees lose their leaves annually."
     puts "Maples and oaks are deciduous trees."
-    puts "Conifers are trees with cones and needle-like or scale-like leaves that are typically evergreen (retain their leaves throughout the year)."
-    puts "Pines and firs are conifers, for example."
-    puts "Deciduous trees lose their leaves annually."
-    puts "Maples and oaks are deciduous trees."
+    puts ""
     question = "Is your tree coniferous or deciduous?"
     output = {
       "My tree is coniferous." => 1,
@@ -42,6 +41,9 @@ class Question
   def self.question_two_conifer
     system "clear"
     tty_runner
+
+    # puts Tree.joins(:users).select("trees.*, favorites.*, users.*").where("users.id = ?", user_id).pluck(:common_name).uniq
+    # binding.pry
 
     puts "Your tree is a conifer! There are XX available conifers."
     puts "The way a conifer's needles are arranged can help you identify the species."
